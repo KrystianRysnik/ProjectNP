@@ -1,14 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="pl" ng-app="app">
     <head>
-        <!--
-            Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
-            For details, see http://go.microsoft.com/fwlink/?LinkID=617521
-        -->
-
-        <meta charset="utf-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        
+        <meta charset="utf-8">     
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
@@ -18,7 +11,7 @@
         <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
         <title>ProjectNP</title>
     </head>
-    <body>
+    <body ng-controller="AuthCtrl">
         <div class="wrapper">
 
             <div ng-view></div><!--/.ng-view-->
@@ -37,9 +30,27 @@
 
         <script src="resources/libs/angularjs/1.6.3/angular.min.js"></script>
 
+        <script src="resources/libs/firbasejs/3.8.0/firebase.js"></script>
+
+        <script src="resources/libs/firbasejs/3.8.0/firebase-app.js"></script>
+        <script src="resources/libs/firbasejs/3.8.0/firebase-auth.js"></script>
+        <script src="resources/libs/firbasejs/3.8.0/firebase-database.js"></script>
+
+        <script src="resources/libs/angularfire/2.3.0/angularfire.min.js"></script>
         <script src="resources/libs/angularjs/1.6.3/angular-route.min.js"></script>
         <script src="resources/libs/angularjs/1.6.3/angular-resource.min.js"></script>
-
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBM2qb4fNljVfAeGTNapTHynXqNJA4ygR0",
+                authDomain: "projectnp-37527.firebaseapp.com",
+                databaseURL: "https://projectnp-37527.firebaseio.com",
+                projectId: "projectnp-37527",
+                storageBucket: "projectnp-37527.appspot.com",
+                messagingSenderId: "1096167235150"
+            };
+            firebase.initializeApp(config);
+        </script>
         <script src="scripts/app.js"></script>
     </body>
 </html>

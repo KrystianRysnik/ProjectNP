@@ -1,4 +1,4 @@
-﻿var app = angular.module('app', ['ngRoute']);
+﻿var app = angular.module('app', ['ngRoute', 'firebase']);
 
 app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider.when('/', {
@@ -11,3 +11,14 @@ app.config(["$routeProvider", function ($routeProvider) {
         redirectTo: '/'
     });
 }]);
+
+app.controller("AuthCtrl", function ($scope, $firebaseObject) {
+    var ref = firebase.database().ref();
+    $scope.data = $firebaseObject(ref);
+});
+
+app.factory("Auth", ["$firebaseAuth",
+  function ($firebaseAuth) {
+      return $firebaseAuth();
+  }
+]);
