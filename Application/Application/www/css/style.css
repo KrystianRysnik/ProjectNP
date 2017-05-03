@@ -28,3 +28,79 @@ html, body {
     position: absolute;
     bottom: 0;
 }
+
+label {
+    font-weight: 100 !important;
+}
+
+.login-tab {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.login-btn {
+    display: block;
+    outline: 0;
+    width: 100%;
+    height: 58px;
+    padding: 14px;
+    margin: 15px 0;
+    font-size: 21px;
+    line-height: 1.42857143;
+    color: #fff;
+    border-width: 0px;
+    background-color: #FFC107;
+}
+
+#login-btn + label {
+    margin: 0 0 15px 0;
+}
+
+.login-input {
+    display: block;
+    outline: 0;
+    width: 100%;
+    height: 34px;
+    margin: 15px 0px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #fff;
+}
+
+.login-tab {
+    font-family: Roboto, sans-serif;
+    color: #fff;
+    background: url("../images/login-background.jpg");
+    background-size: cover;
+    background-position-x: center;
+}
+
+.login-input {
+    padding: 6px 12px 6px 40px;
+    background-color: transparent;
+    border-width: 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    -webkit-transition: border-color ease-in-out .15s;
+    transition: border-color ease-in-out .15s;
+}
+
+.login-input + label {
+    color: rgba(255, 255, 255, 0.3);
+    -webkit-transition: color ease-in-out .15s;
+    transition: color ease-in-out .15s;
+}
+
+.login-input:focus {
+    border-color: #FFC107;
+}
+
+.login-input:focus + label {
+    color: #FFC107;
+}
+
+.login-tab label {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+}
