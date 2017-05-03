@@ -2,6 +2,7 @@
 
 app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider.when('/', {
+        controller: "loginCtrl",
         templateUrl: "views/login.html"
     })
     .when('/register', {
@@ -20,5 +21,19 @@ app.controller("AuthCtrl", function ($scope, $firebaseObject) {
 app.factory("Auth", ["$firebaseAuth",
   function ($firebaseAuth) {
       return $firebaseAuth();
+  }
+]);
+
+app.controller("loginCtrl", ["$scope", "Auth",
+  function ($scope, Auth) {
+      $scope.login = function () {
+          //Logowanie
+          Auth.$signInWithEmailAndPassword($scope.email, $scope.pass)
+          .then(function (user) {
+              console.log("Signed in as:", user.uid);
+          }).catch(function (error) {
+              console.error("Authentication failed:", error);
+          });
+      };
   }
 ]);
