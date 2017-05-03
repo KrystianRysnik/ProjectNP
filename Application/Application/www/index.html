@@ -24,9 +24,9 @@
             <div ng-view></div><!--/.ng-view-->
 
             <div class="align-bottom">
-                <div class="col-xs-10 col-xs-offset-1 text-center">
-                    <a href="#!/register">Nie posiadasz konta? <u>Zarejestruj się</u>!</a>
-                    <a href="#!">Posiadasz już konto? <u>Zaloguj się</u>!</a>
+                <div class="col-xs-10 col-xs-offset-1 text-center" style="padding: 18px 15px;">
+                    <a href="#!/register" ng-click="state = true" ng-hide="state" class="{{state}}">Nie posiadasz konta? <u>Zarejestruj się</u>!</a>
+                    <a href="#!" ng-click="state = false" ng-show="state" class="{{state}}">Posiadasz już konto? <u>Zaloguj się</u>!</a>
                 </div><!--/.down-nav-->
             </div>
         </div><!--/.wrapper-->

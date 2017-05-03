@@ -29,6 +29,19 @@ html, body {
     bottom: 0;
 }
 
+.align-bottom a {
+  color: #FFF;
+}
+
+.align-bottom a.false {
+  color: #fff !important;
+}
+
+.align-bottom a.true {
+  color: #000 !important;
+}
+
+
 label {
     font-weight: 100 !important;
 }
@@ -37,6 +50,7 @@ label {
     width: 100%;
     height: 100%;
     position: absolute;
+    top: 0;
 }
 
 .login-btn, .register-btn {
