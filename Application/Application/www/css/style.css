@@ -1,4 +1,4 @@
-﻿﻿﻿* {
+﻿* {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
@@ -33,13 +33,13 @@ label {
     font-weight: 100 !important;
 }
 
-.login-tab {
+.login-tab, .register-tab {
     width: 100%;
     height: 100%;
     position: absolute;
 }
 
-.login-btn {
+.login-btn, .register-btn {
     display: block;
     outline: 0;
     width: 100%;
@@ -53,11 +53,11 @@ label {
     background-color: #FFC107;
 }
 
-#login-btn + label {
+#login-btn + label, #register-btn + label {
     margin: 0 0 15px 0;
 }
 
-.login-input {
+.login-input, .register-input {
     display: block;
     outline: 0;
     width: 100%;
@@ -68,6 +68,7 @@ label {
     color: #fff;
 }
 
+/* login view */
 .login-tab {
     font-family: Roboto, sans-serif;
     color: #fff;
@@ -103,4 +104,31 @@ label {
     position: absolute;
     bottom: 15px;
     left: 20px;
+}
+
+/* register view */
+.register-tab {
+    color: #000;
+    background: #FFF;
+}
+
+.register-input {
+    padding: 6px 12px;
+    color: #555;
+    background-color: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.04);;
+    -webkit-transition: border-color ease-in-out .15s;
+    transition: border-color ease-in-out .15s;
+}
+
+.register-input:focus {
+    border-color: #FFC107;
+}
+
+.register-tab p a:visited,
+.register-tab p a:active,
+.register-tab p a:hover,
+.register-tab p a:link {
+    text-decoration: underline;
+    color: #FFC107;
 }
