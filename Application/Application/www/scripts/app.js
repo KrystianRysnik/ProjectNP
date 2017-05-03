@@ -6,6 +6,7 @@ app.config(["$routeProvider", function ($routeProvider) {
         templateUrl: "views/login.html"
     })
     .when('/register', {
+        controller: "registerCtrl",
         templateUrl: "views/register.html"
     })
     .otherwise({
@@ -33,6 +34,20 @@ app.controller("loginCtrl", ["$scope", "Auth",
               console.log("Signed in as:", user.uid);
           }).catch(function (error) {
               console.error("Authentication failed:", error);
+          });
+      };
+  }
+]);
+
+app.controller("registerCtrl", ["$scope", "Auth",
+  function ($scope, Auth) {
+      $scope.register = function () {
+          //Rejestracja
+          Auth.$createUserWithEmailAndPassword($scope.email, $scope.pass)
+          .then(function (user) {
+              console.log("User created:", user.uid);
+          }).catch(function (error) {
+              console.error(error);
           });
       };
   }
