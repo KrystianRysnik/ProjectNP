@@ -23,6 +23,38 @@ html, body {
     width: 100%;
 }
 
+/* Navigation top */
+/* ---> .navbar */
+.navbar-color {
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #DDD !important;
+}
+
+.nav-underline a {
+    color: #FFC107;
+}
+
+.nav-underline a:hover,
+.nav-underline a:focus {
+    color: #FFE082;
+}
+
+.nav-underline>li.active>a,
+.nav-underline>li.active>a:focus,
+.nav-underline>li.active>a:hover {
+    color: #FFC107;
+}
+
+.nav-underline > li {
+    float: left;
+}
+
+.nav-underline > li > a:hover {
+   background: transparent !important;
+   color: #FFC107;
+}
+
+/* Navigation bottom */
 .align-bottom {
     width: 100%;
     position: absolute;
@@ -41,7 +73,7 @@ html, body {
   color: #000 !important;
 }
 
-
+/* Login/Register view */
 label {
     font-weight: 100 !important;
 }
@@ -120,7 +152,7 @@ label {
     left: 20px;
 }
 
-/* register view */
+/* Register view */
 .register-tab {
     color: #000;
     background: #FFF;
@@ -146,3 +178,5 @@ label {
     text-decoration: underline;
     color: #FFC107;
 }
+
+/* Home view */
