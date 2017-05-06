@@ -10,6 +10,9 @@ app.config(["$routeProvider", function ($routeProvider) {
         controller: "registerCtrl",
         templateUrl: "views/register.html"
     })
+    .when('/home', {
+      templateUrl: "views/home.html"
+    })
 }]);
 
 // [0]Auth Controller
@@ -38,6 +41,7 @@ app.controller("loginCtrl", ["$scope", "Auth", function ($scope, Auth) {
           //Logowanie
           Auth.$signInWithEmailAndPassword($scope.email, $scope.pass)
           .then(function (user) {
+              location.replace('#!/home');
               console.log("Signed in as:", user.uid);
           }).catch(function (error) {
               console.error("Authentication failed:", error);
@@ -51,6 +55,7 @@ app.controller("registerCtrl", ["$scope", "Auth", function ($scope, Auth) {
           //Rejestracja
           Auth.$createUserWithEmailAndPassword($scope.email, $scope.pass)
           .then(function (user) {
+              location.replace('#!/home');
               console.log("User created:", user.uid);
           }).catch(function (error) {
               console.error(error);
