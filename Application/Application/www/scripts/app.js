@@ -1,4 +1,4 @@
-﻿var app = angular.module('app', ['ngRoute', 'firebase']);
+var app = angular.module('app', ['ngRoute', 'firebase']);
 
 // ngRoute
 app.run(["$rootScope", "$location", function($rootScope, $location) {
@@ -44,7 +44,6 @@ app.controller("AuthCtrl", function ($scope, $firebaseObject) {
     var ref = firebase.database().ref();
     $scope.data = $firebaseObject(ref);
 });
-
 // Auth
 app.factory("Auth", ["$firebaseAuth", function ($firebaseAuth) {
       return $firebaseAuth();
@@ -53,9 +52,12 @@ app.factory("Auth", ["$firebaseAuth", function ($firebaseAuth) {
 // [1]Auth Controller
 app.controller("AuthCtrl", ["$scope", "Auth", function($scope, Auth) {
     $scope.auth = Auth;
-
-    $scope.auth.$onAuthStateChanged(function(firebaseUser) {
+    
+    
+    $scope.auth.$onAuthStateChanged(function(firebaseUser, user) {
         $scope.firebaseUser = firebaseUser;
+        //Witaj <nazwa email uzytkownika>
+        $scope.user = firebase.auth().currentUser;
     });
 }]);
 
