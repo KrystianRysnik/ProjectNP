@@ -1,17 +1,41 @@
 ﻿var app = angular.module('app', ['ngRoute', 'firebase']);
 
 // ngRoute
+app.run(["$rootScope", "$location", function($rootScope, $location) {
+  $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+    if (error === "AUTH_REQUIRED") {
+      $location.path("/");
+    }
+  });
+}]);
+
 app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider.when('/', {
         controller: "loginCtrl",
-        templateUrl: "views/login.html"
+        templateUrl: "views/login.html",
+        resolve: {
+          "currentAuth": ["Auth", function(Auth) {
+            return Auth.$waitForSignIn();
+          }]
+        }
     })
     .when('/register', {
         controller: "registerCtrl",
-        templateUrl: "views/register.html"
+        templateUrl: "views/register.html",
+        resolve: {
+          "currentAuth": ["Auth", function(Auth) {
+            return Auth.$waitForSignIn();
+          }]
+        }
     })
     .when('/home', {
-      templateUrl: "views/home.html"
+      controller: "homeCtrl",
+      templateUrl: "views/home.html",
+      resolve: {
+        "currentAuth": ["Auth", function(Auth) {
+          return Auth.$requireSignIn();
+        }]
+      }
     })
 }]);
 
@@ -61,4 +85,18 @@ app.controller("registerCtrl", ["$scope", "Auth", function ($scope, Auth) {
               console.error(error);
           });
       };
+}]);
+
+// Home Controller
+app.controller("homeCtrl", ["$scope", "Auth", function($scope, Auth) {
+  $scope.signOut = function() {
+    Auth.$signOut().then(function() {
+      location.reload();
+      console.log("Pomyślnie wylogowano.");
+    }).catch(function(error) {
+      console.error(error);
+    })
+
+  }
+
 }]);
