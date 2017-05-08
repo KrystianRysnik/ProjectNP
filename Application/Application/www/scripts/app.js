@@ -95,7 +95,18 @@ app.controller("registerCtrl", ["$scope", "Auth", function ($scope, Auth) {
               location.replace('#!/home');
               console.log("User created:", user.uid);
           }).catch(function (error) {
-              console.error(error);
+            //Możliwe błędy
+            var errorCode = error.code;
+            if(errorCode == 'auth/email-already-in-use') {
+              $scope.errorMessage = 'BŁĄD! Email już wykorzystany.';
+            } else if(errorCode == 'auth/invalid-email') {
+              $scope.errorMessage = 'BŁĄD! Email nieprawidłowy.';
+            } else if(errorCode == 'auth/weak-password') {
+              $scope.errorMessage = 'BŁĄD! Hasło niewystarczająco silne.';
+            } else {
+              $scope.errorMessage = 'BŁĄD! Coś poszło nie tak.';
+            }
+            console.log(error);
           });
       };
 }]);
