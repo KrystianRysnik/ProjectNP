@@ -52,8 +52,8 @@ app.factory("Auth", ["$firebaseAuth", function ($firebaseAuth) {
 // [1]Auth Controller
 app.controller("AuthCtrl", ["$scope", "Auth", function($scope, Auth) {
     $scope.auth = Auth;
-    
-    
+
+
     $scope.auth.$onAuthStateChanged(function(firebaseUser, user) {
         $scope.firebaseUser = firebaseUser;
         //Witaj <nazwa email uzytkownika>
@@ -70,7 +70,18 @@ app.controller("loginCtrl", ["$scope", "Auth", function ($scope, Auth) {
               location.replace('#!/home');
               console.log("Signed in as:", user.uid);
           }).catch(function (error) {
-              console.error("Authentication failed:", error);
+            //Możliwe błędy
+            var errorCode = error.code;
+            if(errorCode == 'auth/invalid-email') {
+              $scope.errorMessage = 'BŁĄD! Email nieprawidłowy.';
+            } else if(errorCode == 'auth/user-not-found') {
+              $scope.errorMessage = 'BŁĄD! Nie znaleziono takiego użytkownika.';
+            } else if(errorCode == 'auth/wrong-password') {
+              $scope.errorMessage = 'BŁĄD! Hasło nieprawidłowe.'
+            } else {
+              $scope.errorMessage = 'BŁĄD! Coś poszło nie tak.';
+            }
+            console.log(error);
           });
       };
 }]);

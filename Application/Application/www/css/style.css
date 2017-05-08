@@ -110,6 +110,15 @@ html, body {
 }
 
 /* Login/Register view */
+.errorMessage {
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  background: #d9534f;
+  position: absolute;
+  top: 0px;
+}
+
 label {
     font-weight: 100 !important;
 }
