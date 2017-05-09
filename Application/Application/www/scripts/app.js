@@ -50,10 +50,13 @@ app.factory("Auth", ["$firebaseAuth", function ($firebaseAuth) {
 }]);
 
 // [1]Auth Controller
-app.controller("AuthCtrl", ["$scope", "Auth", function($scope, Auth) {
+app.controller("AuthCtrl", ["$scope", "Auth", "$firebaseObject",  function($scope, Auth, $firebaseObject) {
     $scope.auth = Auth;
-
-
+    //Wyswietlenie informacji o salonie
+     var ref = firebase.database().ref('bydgoszcz');
+      $scope.salon = $firebaseObject(ref.child('salon01'));
+    
+    
     $scope.auth.$onAuthStateChanged(function(firebaseUser, user) {
         $scope.firebaseUser = firebaseUser;
         //Witaj <nazwa email uzytkownika>

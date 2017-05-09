@@ -1,7 +1,16 @@
 <!-- Home view -->
 <div class="container"  style="padding-top: 60px;">
   Strona główna<br/>
-    <div ng-controller="AuthCtrl">{{user.email}}</div>
+        
+        {{user.email}}<br>
+   
+        Salonu 01:<br>
+        Nazwa: {{salon.nazwa}}<br>
+        Opis: {{salon.opis}}<br>
+        Ulica: {{salon.ulica}}<br>
+        Opinie : {{salon.opinie.Andrzej.komentarz}}
+        
+  <br/>
   <button ng-click="signOut()">Wyloguj się</button>
      
 </div>
