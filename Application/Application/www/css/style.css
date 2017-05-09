@@ -120,6 +120,20 @@ html, body {
   top: 0px;
 }
 
+.errorMessage.ng-enter, .errorMessage.ng-leave {
+  transition: all .3s;
+}
+
+.errorMessage.ng-leave,
+.errorMessage.ng-enter.ng-enter-active {
+  top: 0px;
+}
+
+.errorMessage.ng-enter,
+.errorMessage.ng-leave.ng-leave-active {
+  top: -30px;
+}
+
 label {
     font-weight: 100 !important;
 }

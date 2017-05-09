@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'firebase']);
+﻿var app = angular.module('app', ['ngRoute', 'ngAnimate', 'firebase']);
 
 // ngRoute
 app.run(["$rootScope", "$location", function($rootScope, $location) {
@@ -65,7 +65,11 @@ app.controller("AuthCtrl", ["$scope", "Auth", "$firebaseObject",  function($scop
 }]);
 
 // Login Controller
-app.controller("loginCtrl", ["$scope", "Auth", function ($scope, Auth) {
+app.controller("loginCtrl", ["$timeout", "$scope", "Auth", function ($timeout, $scope, Auth) {
+      var hide = function() {
+        $scope.errorMessage = false;
+      }
+
       $scope.login = function () {
           //Logowanie
           Auth.$signInWithEmailAndPassword($scope.email, $scope.pass)
@@ -85,12 +89,17 @@ app.controller("loginCtrl", ["$scope", "Auth", function ($scope, Auth) {
               $scope.errorMessage = 'BŁĄD! Coś poszło nie tak.';
             }
             console.log(error);
+            $timeout(hide, 3000);
           });
       };
 }]);
 
 // Register Controller
-app.controller("registerCtrl", ["$scope", "Auth", function ($scope, Auth) {
+app.controller("registerCtrl", ["$timeout", "$scope", "Auth", function ($timeout, $scope, Auth) {
+      var hide = function() {
+        $scope.errorMessage = false;
+      }
+
       $scope.register = function () {
           //Rejestracja
           Auth.$createUserWithEmailAndPassword($scope.email, $scope.pass)
@@ -110,6 +119,7 @@ app.controller("registerCtrl", ["$scope", "Auth", function ($scope, Auth) {
               $scope.errorMessage = 'BŁĄD! Coś poszło nie tak.';
             }
             console.log(error);
+            $timeout(hide, 3000);
           });
       };
 }]);
