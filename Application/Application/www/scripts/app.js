@@ -37,6 +37,15 @@ app.config(["$routeProvider", function ($routeProvider) {
         }]
       }
     })
+    .when('/account', {
+      controller: "accountCtrl",
+      templateUrl: "views/account.html",
+      resolve: {
+        "currentAuth": ["Auth", function(Auth) {
+          return Auth.$requireSignIn();
+        }]
+      }
+    })
 }]);
 
 // [0]Auth Controller
@@ -134,5 +143,9 @@ app.controller("homeCtrl", ["$scope", "Auth", function($scope, Auth) {
     })
 
   }
+}]);
 
+// Account Controller
+app.controller("accountCtrl", ["$scope", "Auth", function($scope, Auth) {
+  // code
 }]);
