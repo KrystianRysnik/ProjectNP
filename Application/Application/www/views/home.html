@@ -1,15 +1,12 @@
 <!-- Home view -->
 <div class="container"  style="padding-top: 60px;">
   Strona główna<br/>
-        
-        {{user.email}}<br>
-   
-        Salonu 01:<br>
+  <div class="container" >
         Nazwa: {{salon.nazwa}}<br>
         Opis: {{salon.opis}}<br>
         Ulica: {{salon.ulica}}<br>
         Opinie : {{salon.opinie.Andrzej.komentarz}}
-        
+  </div>
   <br/>
   <button ng-click="signOut()">Wyloguj się</button>
      

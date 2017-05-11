@@ -57,10 +57,9 @@ app.controller("AuthCtrl", ["$scope", "Auth", "$firebaseObject",  function($scop
       $scope.salon = $firebaseObject(ref.child('salon01'));
     
     
-    $scope.auth.$onAuthStateChanged(function(firebaseUser, user) {
+    $scope.auth.$onAuthStateChanged(function(firebaseUser) {
+        // Wyswietlenie informacji o uzytkowniku np. {{ firebaseUser.email }}
         $scope.firebaseUser = firebaseUser;
-        //Witaj <nazwa email uzytkownika>
-        $scope.user = firebase.auth().currentUser;
     });
 }]);
 
