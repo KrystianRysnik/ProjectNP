@@ -48,24 +48,17 @@ app.config(["$routeProvider", function ($routeProvider) {
     })
 }]);
 
-// [0]Auth Controller
-app.controller("AuthCtrl", function ($scope, $firebaseObject) {
-    var ref = firebase.database().ref();
-    $scope.data = $firebaseObject(ref);
-});
 // Auth
 app.factory("Auth", ["$firebaseAuth", function ($firebaseAuth) {
       return $firebaseAuth();
 }]);
 
-// [1]Auth Controller
+// Auth Controller
 app.controller("AuthCtrl", ["$scope", "Auth", "$firebaseObject",  function($scope, Auth, $firebaseObject) {
+    var ref = firebase.database().ref();
+    $scope.salons = $firebaseObject(ref.child('pl_salon'));
+
     $scope.auth = Auth;
-    //Wyswietlenie informacji o salonie
-     var ref = firebase.database().ref('bydgoszcz');
-      $scope.salon = $firebaseObject(ref.child('salon01'));
-    
-    
     $scope.auth.$onAuthStateChanged(function(firebaseUser) {
         // Wyswietlenie informacji o uzytkowniku np. {{ firebaseUser.email }}
         $scope.firebaseUser = firebaseUser;
