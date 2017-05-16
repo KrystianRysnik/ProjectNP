@@ -1,6 +1,6 @@
 <!-- Home view -->
 <div class="wrapper"  style="padding-top: 45px;">
-    <div class="salon" ng-repeat="salon in salons">
+    <div class="salon" ng-repeat="(id, salon) in salons">
       <div class="salon-background" ng-style="{'background-image':'url({{ salon.photoUrl }})'}">
         <div class="salon-name">
           <div class="row">
