@@ -1,4 +1,4 @@
-﻿var app = angular.module('app', ['ngRoute', 'ngAnimate', 'firebase']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'firebase']);
 
 // ngRoute
 app.run(["$rootScope", "$location", function($rootScope, $location) {
@@ -40,6 +40,14 @@ app.config(["$routeProvider", function ($routeProvider) {
     .when('/account', {
       controller: "accountCtrl",
       templateUrl: "views/account.html",
+      resolve: {
+        "currentAuth": ["Auth", function(Auth) {
+          return Auth.$requireSignIn();
+        }]
+      }
+    })
+    .when('/about', {
+      templateUrl: "views/about.html",
       resolve: {
         "currentAuth": ["Auth", function(Auth) {
           return Auth.$requireSignIn();
