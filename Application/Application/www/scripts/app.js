@@ -46,6 +46,15 @@ app.config(["$routeProvider", function ($routeProvider) {
         }]
       }
     })
+    .when('/salon', {
+      controller: "salonCtrl",
+      templateUrl: "views/salon.html",
+      resolve: {
+        "currentAuth": ["Auth", function(Auth) {
+          return Auth.$requireSignIn();
+        }]
+      }
+    })
     .when('/about', {
       templateUrl: "views/about.html",
       resolve: {
@@ -135,6 +144,11 @@ app.controller("registerCtrl", ["$timeout", "$scope", "Auth", function ($timeout
 
 // Home Controller
 app.controller("homeCtrl", ["$scope", "Auth", function($scope, Auth) {
+  // code
+}]);
+
+// Account Controller
+app.controller("accountCtrl", ["$scope", "Auth", function($scope, Auth) {
   $scope.signOut = function() {
     Auth.$signOut().then(function() {
       location.reload();
@@ -146,7 +160,3 @@ app.controller("homeCtrl", ["$scope", "Auth", function($scope, Auth) {
   }
 }]);
 
-// Account Controller
-app.controller("accountCtrl", ["$scope", "Auth", function($scope, Auth) {
-  // code
-}]);
