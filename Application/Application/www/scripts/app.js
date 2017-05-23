@@ -80,6 +80,16 @@ app.controller("AuthCtrl", ["$scope", "Auth", "$firebaseObject",  function($scop
         // Wyswietlenie informacji o uzytkowniku np. {{ firebaseUser.email }}
         $scope.firebaseUser = firebaseUser;
     });
+    $scope.signOut = function() {
+    Auth.$signOut().then(function() {
+      location.reload();
+      console.log("Pomyślnie wylogowano.");
+    }).catch(function(error) {
+      console.error(error);
+    })
+
+  }
+    
 }]);
 
 // Login Controller
@@ -149,15 +159,7 @@ app.controller("homeCtrl", ["$scope", "Auth", function($scope, Auth) {
 
 // Account Controller
 app.controller("accountCtrl", ["$scope", "Auth", function($scope, Auth) {
-  $scope.signOut = function() {
-    Auth.$signOut().then(function() {
-      location.reload();
-      console.log("Pomyślnie wylogowano.");
-    }).catch(function(error) {
-      console.error(error);
-    })
-
-  }
+  
 }]);
 
 // Salon Controller
