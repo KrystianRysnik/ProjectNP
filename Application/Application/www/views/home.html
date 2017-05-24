@@ -1,28 +1,28 @@
 <!-- Home view -->
 <div class="wrapper"  style="padding-top: 45px;">
     <div class="salon" ng-repeat="(id, salon) in salons">
-      <div class="salon-background" ng-style="{'background-image':'url({{ salon.photoUrl }})'}">
-        <div class="salon-name">
-          <div class="row">
-            <div class="col-xs-8">
-              <span class="salon-rate">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-half-o"></i>
-                  <i class="fa fa-star-o"></i>
-              </span><br/>
-              <strong>{{ salon.name }}</strong><br/>
-              <i class="fa fa-map-marker"></i> {{ salon.zip_code }}, {{ salon.city }}<br/>
-              <i class="fa fa-phone"></i> {{ salon.phone }}
+        <div class="salon-background" ng-style="{'background-image':'url({{ salon.photoUrl }})'}">
+            <div class="salon-name">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <span class="salon-rate">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </span><br/>
+                        <strong>{{ salon.name }}</strong><br/>
+                        <i class="fa fa-map-marker"></i> {{ salon.zip_code }}, {{ salon.city }}<br/>
+                        <i class="fa fa-phone"></i> {{ salon.phone }}
+                    </div>
+                    <div class="col-xs-4 text-right">
+                        <a ng-href="#!/salon?activeSalon={{id}}">
+                            <button class="btn btn-warning btn-lg" style="margin: 17px 20px 0 0;">Sprawdź</button>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-4 text-right">
-              <a ng-href="#!/salon?activeSalon={{id}}">
-                <button class="btn btn-warning btn-lg" style="margin: 17px 20px 0 0;">Sprawdź</button>
-              </a>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
 </div>

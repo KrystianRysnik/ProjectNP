@@ -15,7 +15,5 @@ app.controller("AuthCtrl", ["$scope", "Auth", "$firebaseObject", function ($scop
         }).catch(function (error) {
             console.error(error);
         })
-
     }
-
 }]);
