@@ -78,10 +78,7 @@ app.factory("Auth", ["$firebaseAuth", function ($firebaseAuth) {
 
 
 
-// Account Controller
-app.controller("accountCtrl", ["$scope", "Auth", function($scope, Auth) {
-  
-}]);
+
 
 // Salon Controller
 app.controller("salonCtrl", ["$scope", "$location", "Auth", "$firebaseObject", function($scope, $location, Auth, $firebaseObject) {
