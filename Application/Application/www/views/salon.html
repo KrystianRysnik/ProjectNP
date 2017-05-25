@@ -59,6 +59,13 @@
 <!-- Booking here -->
 <div class="book"  ng-show="showBook">
     <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <input type="button" ng-click="prevDay()" value="&#9668;">
+                <span>{{ now | date : 'longDate' }}</span>
+                <input type="button" ng-click="nextDay()" value="&#9658;">
+            </div>
+        </div>
         <div class="row text-center">
             <div class="col-xs-6">
                 <button ng-click="showBook = false" class="btn btn-lg btn-danger"><i class="fa fa-close"></i> Anuluj</button>
