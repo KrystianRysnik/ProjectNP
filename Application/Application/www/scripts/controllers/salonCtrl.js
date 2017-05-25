@@ -43,4 +43,29 @@ app.controller("salonCtrl", ["$scope", "$location", "Auth", "$firebaseObject", f
     $scope.nextDay = function() {
         $scope.now = new Date(($scope.now.getTime()+(1*24*60*60*1000)))
     }
+
+    $scope.activeHour = function(event) {
+        $scope.hour = event.target.id;
+    }
+
+    $scope.saveBook = function() {
+        $scope.date = ('0' + $scope.now.getDate()).slice(-2) + '-'
+            + ('0' + ($scope.now.getMonth()+1)).slice(-2) + '-'
+            + $scope.now.getFullYear() + 'T'
+            + $scope.hour + ':00.000';
+
+        var d = new Date();
+        $scope.newDate = d.getTime();
+        
+        var reservation = $firebaseObject(ref.child('pl_salon').child($scope.activeSalon).child('reservation').child($scope.newDate));
+        reservation.salon = $scope.salon.$id;
+        reservation.service =  $scope.activeService
+        reservation.user = $scope.firebaseUser.uid;
+        reservation.date = $scope.date;
+        reservation.$save();
+        console.log('Selected date: '+$scope.date
+            +'\nSelected salon: '+$scope.salon.$id
+            +'\nSelected service: '+$scope.activeService
+            +'\nUser UID: '+$scope.firebaseUser.uid);
+    }
 }])
