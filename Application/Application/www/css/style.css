@@ -294,6 +294,33 @@ label {
     margin: 15px -15px;
 }
 
+.hours {
+    padding: 10px 0;
+    background: #2e383a;
+}
+
+.hours ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hours ul li {
+    display: block;
+    float: left;
+}
+
+.hours ul li label {
+    widtH: 75px;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
 /* About view */
 .social-nav {
     padding: 0;

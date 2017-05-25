@@ -66,6 +66,14 @@
                 <input type="button" ng-click="nextDay()" value="&#9658;">
             </div>
         </div>
+        <div class="row hours" style="color: #fff;">
+            <ul>
+                <li ng-repeat="hour in getTimeArray(start, stop, 30)">
+                    <input type="radio" id="{{hour}}" name="hour" value="{{hour}}">
+                    <label for="{{hour}}" ng-click="activeHour($event)" id="{{hour}}">{{hour}}</label>
+                </li>
+            </ul>
+        </div>
         <div class="row text-center">
             <div class="col-xs-6">
                 <button ng-click="showBook = false" class="btn btn-lg btn-danger"><i class="fa fa-close"></i> Anuluj</button>
