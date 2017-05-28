@@ -69,3 +69,12 @@ app.config(["$routeProvider", function ($routeProvider) {
 app.factory("Auth", ["$firebaseAuth", function ($firebaseAuth) {
     return $firebaseAuth();
 }]);
+
+// Factory Profile
+app.factory("Profile", ["$firebaseObject", function ($firebaseObject) {
+    return function (useruid) {
+        var ref = firebase.database().ref();
+        var profileRef = $firebaseObject(ref.child('profiles').child(useruid));
+        return profileRef;
+    }
+}]);
