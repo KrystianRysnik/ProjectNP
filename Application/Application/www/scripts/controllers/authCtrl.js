@@ -1,13 +1,11 @@
 // Auth Controller
-app.controller("AuthCtrl", ["$scope", "Auth", "$firebaseObject", function ($scope, Auth, $firebaseObject) {
-    var ref = firebase.database().ref();
-    $scope.salons = $firebaseObject(ref.child('pl_salon'));
-
+app.controller("AuthCtrl", ["$scope", "Auth", function ($scope, Auth) {
     $scope.auth = Auth;
     $scope.auth.$onAuthStateChanged(function (firebaseUser) {
         // Wyswietlenie informacji o uzytkowniku np. {{ firebaseUser.email }}
         $scope.firebaseUser = firebaseUser;
     });
+
     $scope.signOut = function () {
         Auth.$signOut().then(function () {
             location.reload();
