@@ -1,5 +1,5 @@
 // Register Controller
-app.controller("registerCtrl", ["$timeout", "$scope", "Auth", function ($timeout, $scope, Auth) {
+app.controller("registerCtrl", ["$timeout", "$scope", "Auth", "Profile", function ($timeout, $scope, Auth, Profile) {
     var hide = function () {
         $scope.errorMessage = false;
     }
@@ -8,6 +8,11 @@ app.controller("registerCtrl", ["$timeout", "$scope", "Auth", function ($timeout
         //Rejestracja
         Auth.$createUserWithEmailAndPassword($scope.email, $scope.pass)
         .then(function (user) {
+            var profile = Profile(user.uid);
+            profile.firstName = $scope.firstName;
+            profile.lastName = $scope.lastName;
+            profile.email = $scope.email;
+            profile.$save();
             location.replace('#!/home');
             console.log("User created:", user.uid);
         }).catch(function (error) {
