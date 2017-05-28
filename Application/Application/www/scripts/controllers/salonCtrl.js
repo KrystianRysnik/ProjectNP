@@ -7,7 +7,7 @@ app.controller("salonCtrl", ["$scope", "$location", "Auth", "$firebaseObject", f
 
     $scope.booking = function(event) {
         $scope.activeService = event.target.id;
-        $scope.showBook = 'true';
+        $scope.showBook = true;
         $scope.now = new Date();
         $scope.start = $scope.salon.hourStart;
         $scope.stop = $scope.salon.hourEnd;
@@ -49,23 +49,32 @@ app.controller("salonCtrl", ["$scope", "$location", "Auth", "$firebaseObject", f
     }
 
     $scope.saveBook = function() {
-        $scope.date = ('0' + $scope.now.getDate()).slice(-2) + '-'
+        $scope.date =  $scope.now.getFullYear() + '-'
             + ('0' + ($scope.now.getMonth()+1)).slice(-2) + '-'
-            + $scope.now.getFullYear() + 'T'
-            + $scope.hour + ':00.000';
+            + ('0' + $scope.now.getDate()).slice(-2) + 'T'
+            + $scope.hour + ':00.000Z';
 
         var d = new Date();
         $scope.newDate = d.getTime();
         
         var reservation = $firebaseObject(ref.child('pl_salon').child($scope.activeSalon).child('reservation').child($scope.newDate));
         reservation.salon = $scope.salon.$id;
-        reservation.service =  $scope.activeService
+        reservation.service =  $scope.activeService;
         reservation.user = $scope.firebaseUser.uid;
         reservation.date = $scope.date;
         reservation.$save();
+
+        var uReservation = $firebaseObject(ref.child('profiles').child($scope.firebaseUser.uid).child('reservation').child($scope.newDate));
+        uReservation.salon = $scope.salon.$id;
+        uReservation.service =  $scope.activeService;
+        uReservation.date = $scope.date;
+        uReservation.$save();
+
         console.log('Selected date: '+$scope.date
             +'\nSelected salon: '+$scope.salon.$id
             +'\nSelected service: '+$scope.activeService
             +'\nUser UID: '+$scope.firebaseUser.uid);
+
+        $scope.showBook = false;
     }
 }])
