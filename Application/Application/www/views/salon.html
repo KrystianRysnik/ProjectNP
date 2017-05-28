@@ -60,26 +60,46 @@
 <div class="book"  ng-show="showBook">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 text-center">
-                <input type="button" ng-click="prevDay()" value="&#9668;">
-                <span>{{ now | date : 'longDate' }}</span>
-                <input type="button" ng-click="nextDay()" value="&#9658;">
+            <div class="col-xs-9 text-left">
+                <h4>Wybierz datę i godzinę:</h4>
+            </div>
+            <div class="col-xs-3 text-right">
+                <span class="fa-stack fa-lg" ng-click="showBook = false">
+                    <i class="fa fa-circle-o fa-stack-2x"></i>
+                    <i class="fa fa-close fa-stack-1x"></i>
+                </span>
+            </div>
+        </div>
+        <div class="row date">
+            <div class="col-xs-3 text-right">
+                <span class="fa-stack fa-lg" ng-click="prevDay()">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-arrow-left fa-stack-1x fa-inverse"></i>
+                </span>
+            </div>
+            <div class="col-xs-6 text-center">
+                <span><strong>{{ now | date : 'yyyy' }}</strong><br/>{{ now | date : 'EEE d MMM' }}</span>
+            </div>
+            <div class="col-xs-3 text-left">
+                <span class="fa-stack fa-lg" ng-click="nextDay()">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-arrow-right fa-stack-1x fa-inverse"></i>
+                </span>
             </div>
         </div>
         <div class="row hours" style="color: #fff;">
-            <ul>
-                <li ng-repeat="hour in getTimeArray(start, stop, 30)">
-                    <input type="radio" id="{{hour}}" name="hour" value="{{hour}}">
-                    <label for="{{hour}}" ng-click="activeHour($event)" id="{{hour}}">{{hour}}</label>
-                </li>
-            </ul>
+            <div class="col-xs-12 text-center">
+                <ul>
+                    <li ng-repeat="hour in getTimeArray(start, stop, 30)">
+                        <input type="radio" id="{{hour}}" name="hour" value="{{hour}}" class="hide">
+                        <label for="{{hour}}" ng-click="activeHour($event)" id="{{hour}}">{{hour}}</label>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="row text-center">
-            <div class="col-xs-6">
-                <button ng-click="showBook = false" class="btn btn-lg btn-danger"><i class="fa fa-close"></i> Anuluj</button>
-            </div>
-            <div class="col-xs-6">
-                <button ng-click="saveBook()" class="btn btn-lg btn-success"><i class="fa fa-check"></i> Zatwierdź</button>
+            <div class="col-xs-12">
+                <button ng-click="saveBook()" class="btn btn-block btn-lg btn-warning">Kontynuuj: {{ now | date : 'EEE d MMM yyyy' + ', ' + hour }}</button>
             </div>
         </div>
     </div>

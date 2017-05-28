@@ -281,17 +281,25 @@ label {
 }
 
 .book {
-    background: #F3F3F3;
+    background: #fff;
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1032;
+    overflow: auto;
+}
+
+.book .date {
+    background: #f8f8f8;
+    border-top: 2px solid #DDD;
+    padding: 15px;
 }
 
 .book .container .row {
-    margin: 15px -15px;
+    margin: 0px -15px;
+    padding: 15px 0px;
 }
 
 .hours {
@@ -303,14 +311,15 @@ label {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    text-align:center;
 }
 
 .hours ul li {
-    display: block;
-    float: left;
+    display: inline-block;
 }
 
 .hours ul li label {
+    background: transparent;
     widtH: 75px;
     padding: 10px;
     margin: 10px;
@@ -319,6 +328,15 @@ label {
     color: #fff;
     text-align: center;
     cursor: pointer;
+}
+
+.date span {
+    font-size: 1.2em;
+}
+
+input[type='radio']:checked + label {
+    background: #fff;
+    color: #000;
 }
 
 /* About view */
