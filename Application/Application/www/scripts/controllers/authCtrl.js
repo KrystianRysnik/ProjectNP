@@ -1,5 +1,5 @@
 // Auth Controller
-app.controller("AuthCtrl", ["$scope", "Auth", function ($scope, Auth) {
+app.controller("AuthCtrl", ["$scope", "Auth", "Profile", function ($scope, Auth, Profile) {
     $scope.auth = Auth;
     $scope.auth.$onAuthStateChanged(function (firebaseUser) {
         // Wyswietlenie informacji o uzytkowniku np. {{ firebaseUser.email }}
