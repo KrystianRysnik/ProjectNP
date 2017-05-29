@@ -37,11 +37,15 @@ app.controller("salonCtrl", ["$scope", "$location", "Auth", "$firebaseObject", f
     }
 
     $scope.prevDay = function() {
-        $scope.now = new Date(($scope.now.getTime()-(1*24*60*60*1000)))
+        $scope.now = new Date(($scope.now.getTime()-(1*24*60*60*1000)));
+        document.getElementById($scope.hour).checked = false;
+        $scope.hour = '';
     }
 
     $scope.nextDay = function() {
-        $scope.now = new Date(($scope.now.getTime()+(1*24*60*60*1000)))
+        $scope.now = new Date(($scope.now.getTime()+(1*24*60*60*1000)));
+        document.getElementById($scope.hour).checked = false;
+        $scope.hour = '';
     }
 
     $scope.activeHour = function(event) {
@@ -56,7 +60,7 @@ app.controller("salonCtrl", ["$scope", "$location", "Auth", "$firebaseObject", f
 
         var d = new Date();
         $scope.newDate = d.getTime();
-        
+
         var reservation = $firebaseObject(ref.child('pl_salon').child($scope.activeSalon).child('reservation').child($scope.newDate));
         reservation.salon = $scope.salon.$id;
         reservation.service =  $scope.activeService;
