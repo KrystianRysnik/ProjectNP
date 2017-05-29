@@ -26,10 +26,27 @@ body {
 }
 
 /* index/other */
+.book .fixedTop {
+    z-index: 1033;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+}
+
+.book .fixedBottom {
+    z-index: 1033;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background:#fff;
+}
+
 .wrapper {
     height: 100%;
     width: 100%;
-    oveflow:
 }
 
 /* Navigation top */
@@ -303,8 +320,10 @@ label {
 }
 
 .hours {
-    padding: 10px 0;
+    padding: 157px 0px 86px 0px !important;
     background: #2e383a;
+    color: #fff;
+
 }
 
 .hours ul {
